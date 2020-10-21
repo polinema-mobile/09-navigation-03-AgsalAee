@@ -30,13 +30,13 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestSkor {
+public class ScoreTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testSkor() {
+    public void scoreTest() {
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.button_add_home), withText("Add Score Home"),
                         childAtPosition(
@@ -55,7 +55,7 @@ public class TestSkor {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("andi"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("Andi"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.input_minute), withText("0"),
@@ -65,10 +65,10 @@ public class TestSkor {
                                         0),
                                 4),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("5"));
+        appCompatEditText2.perform(replaceText("05"));
 
         ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.input_minute), withText("5"),
+                allOf(withId(R.id.input_minute), withText("05"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.fragment),
@@ -78,7 +78,7 @@ public class TestSkor {
         appCompatEditText3.perform(closeSoftKeyboard());
 
         ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.input_minute), withText("5"),
+                allOf(withId(R.id.input_minute), withText("05"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.fragment),
@@ -87,27 +87,15 @@ public class TestSkor {
                         isDisplayed()));
         appCompatEditText4.perform(pressImeActionButton());
 
-        pressBack();
-
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.button_save), withText("Save"),
+                allOf(withId(R.id.button_add_home), withText("Add Score Home"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.fragment),
                                         0),
-                                5),
+                                2),
                         isDisplayed()));
         appCompatButton2.perform(click());
-
-        ViewInteraction appCompatButton3 = onView(
-                allOf(withId(R.id.button_add_away), withText("Add Score Away"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.fragment),
-                                        0),
-                                3),
-                        isDisplayed()));
-        appCompatButton3.perform(click());
 
         ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.input_name),
@@ -127,10 +115,10 @@ public class TestSkor {
                                         0),
                                 4),
                         isDisplayed()));
-        appCompatEditText6.perform(replaceText("5"));
+        appCompatEditText6.perform(replaceText("05"));
 
         ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.input_minute), withText("5"),
+                allOf(withId(R.id.input_minute), withText("05"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.fragment),
@@ -141,7 +129,7 @@ public class TestSkor {
 
         pressBack();
 
-        ViewInteraction appCompatButton4 = onView(
+        ViewInteraction appCompatButton3 = onView(
                 allOf(withId(R.id.button_save), withText("Save"),
                         childAtPosition(
                                 childAtPosition(
@@ -149,17 +137,17 @@ public class TestSkor {
                                         0),
                                 5),
                         isDisplayed()));
-        appCompatButton4.perform(click());
+        appCompatButton3.perform(click());
 
-        ViewInteraction appCompatButton5 = onView(
-                allOf(withId(R.id.button_add_home), withText("Add Score Home"),
+        ViewInteraction appCompatButton4 = onView(
+                allOf(withId(R.id.button_add_away), withText("Add Score Away"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.fragment),
                                         0),
-                                2),
+                                3),
                         isDisplayed()));
-        appCompatButton5.perform(click());
+        appCompatButton4.perform(click());
 
         ViewInteraction appCompatEditText8 = onView(
                 allOf(withId(R.id.input_name),
@@ -169,59 +157,37 @@ public class TestSkor {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText8.perform(replaceText("Budi"), closeSoftKeyboard());
+        appCompatEditText8.perform(replaceText("Bagu"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText9 = onView(
-                allOf(withId(R.id.input_minute), withText("0"),
+                allOf(withId(R.id.input_name), withText("Bagu"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.fragment),
                                         0),
-                                4),
+                                3),
                         isDisplayed()));
-        appCompatEditText9.perform(replaceText("10"));
+        appCompatEditText9.perform(click());
 
         ViewInteraction appCompatEditText10 = onView(
-                allOf(withId(R.id.input_minute), withText("10"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.fragment),
-                                        0),
-                                4),
-                        isDisplayed()));
-        appCompatEditText10.perform(closeSoftKeyboard());
-
-        pressBack();
-
-        ViewInteraction appCompatButton6 = onView(
-                allOf(withId(R.id.button_save), withText("Save"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.fragment),
-                                        0),
-                                5),
-                        isDisplayed()));
-        appCompatButton6.perform(click());
-
-        ViewInteraction appCompatButton7 = onView(
-                allOf(withId(R.id.button_add_away), withText("Add Score Away"),
+                allOf(withId(R.id.input_name), withText("Bagu"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.fragment),
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatButton7.perform(click());
+        appCompatEditText10.perform(replaceText("Bagus"));
 
         ViewInteraction appCompatEditText11 = onView(
-                allOf(withId(R.id.input_name),
+                allOf(withId(R.id.input_name), withText("Bagus"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.fragment),
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText11.perform(replaceText("Budi"), closeSoftKeyboard());
+        appCompatEditText11.perform(closeSoftKeyboard());
 
         ViewInteraction appCompatEditText12 = onView(
                 allOf(withId(R.id.input_minute), withText("0"),
@@ -231,10 +197,10 @@ public class TestSkor {
                                         0),
                                 4),
                         isDisplayed()));
-        appCompatEditText12.perform(replaceText("10"));
+        appCompatEditText12.perform(replaceText("010"));
 
         ViewInteraction appCompatEditText13 = onView(
-                allOf(withId(R.id.input_minute), withText("10"),
+                allOf(withId(R.id.input_minute), withText("010"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.fragment),
@@ -245,7 +211,7 @@ public class TestSkor {
 
         pressBack();
 
-        ViewInteraction appCompatButton8 = onView(
+        ViewInteraction appCompatButton5 = onView(
                 allOf(withId(R.id.button_save), withText("Save"),
                         childAtPosition(
                                 childAtPosition(
@@ -253,47 +219,7 @@ public class TestSkor {
                                         0),
                                 5),
                         isDisplayed()));
-        appCompatButton8.perform(click());
-
-        ViewInteraction appCompatButton9 = onView(
-                allOf(withId(R.id.button_add_home), withText("Add Score Home"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.fragment),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatButton9.perform(click());
-
-        ViewInteraction appCompatButton10 = onView(
-                allOf(withId(R.id.button_cancel), withText("Cancel"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.fragment),
-                                        0),
-                                6),
-                        isDisplayed()));
-        appCompatButton10.perform(click());
-
-        ViewInteraction appCompatButton11 = onView(
-                allOf(withId(R.id.button_add_away), withText("Add Score Away"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.fragment),
-                                        0),
-                                3),
-                        isDisplayed()));
-        appCompatButton11.perform(click());
-
-        ViewInteraction appCompatButton12 = onView(
-                allOf(withId(R.id.button_cancel), withText("Cancel"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.fragment),
-                                        0),
-                                6),
-                        isDisplayed()));
-        appCompatButton12.perform(click());
+        appCompatButton5.perform(click());
     }
 
     private static Matcher<View> childAtPosition(

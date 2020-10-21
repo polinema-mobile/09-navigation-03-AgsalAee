@@ -27,13 +27,13 @@ public class SkorTest {
 	@Before
 	public void before() {
 		activityScenarioRule.getScenario()
-			.onActivity(new ActivityScenario.ActivityAction<MainActivity>() {
-				@Override
-				public void perform(MainActivity activity) {
-					activity.getSupportFragmentManager()
-						.beginTransaction();
-				}
-			});
+				.onActivity(new ActivityScenario.ActivityAction<MainActivity>() {
+					@Override
+					public void perform(MainActivity activity) {
+						activity.getSupportFragmentManager()
+								.beginTransaction();
+					}
+				});
 	}
 
 	@Test
