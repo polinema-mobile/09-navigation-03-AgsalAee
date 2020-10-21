@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
@@ -14,7 +13,6 @@ import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import id.ac.polinema.skor.R;
 import id.ac.polinema.skor.databinding.FragmentScoreBinding;
@@ -32,8 +30,6 @@ public class ScoreFragment extends Fragment {
 	private List<GoalScorer> homeGoalScorerList;
 	private List<GoalScorer> awayGoalScorerList;
 
-	GoalScorer goalscorer;
-
 	private FragmentScoreBinding binding;
 
 	public ScoreFragment() {
@@ -49,10 +45,10 @@ public class ScoreFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		FragmentScoreBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_score, container, false);
+		binding = DataBindingUtil.inflate(inflater, R.layout.fragment_score, container, false);
+		binding.setFragment(this);
 		binding.setHomeGoalScorerList(homeGoalScorerList);
 		binding.setAwayGoalScorerList(awayGoalScorerList);
-		binding.setFragment(this);
 
 		getParentFragmentManager().setFragmentResultListener(HOME_REQUEST_KEY, this, new FragmentResultListener() {
 			@Override
@@ -80,6 +76,28 @@ public class ScoreFragment extends Fragment {
 	public void onAddAwayClick(View view) {
 		ScoreFragmentDirections.GoalScorerAction action = ScoreFragmentDirections.goalScorerAction(AWAY_REQUEST_KEY);
 		Navigation.findNavController(view).navigate(action);
+	}
+
+	public String getHomeScorer() {
+		StringBuilder result = new StringBuilder();
+		for (GoalScorer g : homeGoalScorerList) {
+			result.append(g.getName())
+					.append(" ")
+					.append(g.getMinute())
+					.append("\" ");
+		}
+		return result.toString();
+	}
+
+	public String getAwayScorer() {
+		StringBuilder result = new StringBuilder();
+		for (GoalScorer g : awayGoalScorerList) {
+			result.append(g.getName())
+					.append(" ")
+					.append(g.getMinute())
+					.append("\" ");
+		}
+		return result.toString();
 	}
 
 }
