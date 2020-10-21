@@ -20,7 +20,6 @@ public class GoalFragment extends Fragment {
 
 	private String requestKey;
 	private GoalScorer goalScorer;
-
 	private FragmentGoalBinding binding;
 
 	public GoalFragment() {
