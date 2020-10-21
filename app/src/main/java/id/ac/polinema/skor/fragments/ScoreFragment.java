@@ -53,6 +53,7 @@ public class ScoreFragment extends Fragment {
 		binding.setHomeGoalScorerList(homeGoalScorerList);
 		binding.setAwayGoalScorerList(awayGoalScorerList);
 		binding.setFragment(this);
+
 		getParentFragmentManager().setFragmentResultListener(HOME_REQUEST_KEY, this, new FragmentResultListener() {
 			@Override
 			public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
@@ -69,7 +70,6 @@ public class ScoreFragment extends Fragment {
 			}
 		});
 		return binding.getRoot();
-
 	}
 
 	public void onAddHomeClick(View view) {

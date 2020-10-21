@@ -39,28 +39,33 @@ public class GoalFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_goal,container,false);
-		return view;
+		FragmentGoalBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_goal, container, false);
+		binding.setFragment(this);
+		binding.setGoalScorer(goalScorer);
+		requestKey = GoalFragmentArgs.fromBundle(getArguments()).getRequestKey();
+		return binding.getRoot();
 	}
 
-	@Override
-	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		FragmentGoalBinding binding = DataBindingUtil.setContentView(getActivity(),R.layout.fragment_goal);
-		if(getArguments().getParcelable("home")!=null){
-			binding.setGoalScorer((GoalScorer) getArguments().getParcelable("home"));
-		}else if (getArguments().getParcelable("away")!=null){
-			binding.setGoalScorer((GoalScorer) getArguments().getParcelable("away"));
-		}
-	}
+//	@Override
+//	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//		super.onViewCreated(view, savedInstanceState);
+//		FragmentGoalBinding binding = DataBindingUtil.setContentView(getActivity(),R.layout.fragment_goal);
+//		if(getArguments().getParcelable("home")!=null){
+//			binding.setGoalScorer((GoalScorer) getArguments().getParcelable("home"));
+//		}else if (getArguments().getParcelable("away")!=null){
+//			binding.setGoalScorer((GoalScorer) getArguments().getParcelable("away"));
+//		}
+//	}
 
 	public void onSaveClicked(View view) {
-		binding = DataBindingUtil.setContentView(getActivity(),R.layout.fragment_goal);
-		final NavController navController = Navigation.findNavController(view);
 		Bundle bundle = new Bundle();
+		bundle.putParcelable(ScoreFragment.SCORER_KEY, goalScorer);
+		getParentFragmentManager().setFragmentResult(requestKey, bundle);
+		Navigation.findNavController(view).navigateUp();
 	}
 
 	public void onCancelClicked(View view) {
+
 		Navigation.findNavController(view).navigateUp();
 	}
 }
